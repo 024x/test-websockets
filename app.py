@@ -16,6 +16,56 @@ rd = {'SATYA': 'M1KOOMRRNB', 'NAVEEN': '37DMZL7V04', 'PLUTO': 'ZYXO069NT5', 'SAF
 active_connections: Dict[str, list] = {}
 
 
+@router.get("/")
+async def root():
+    return """
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+  body {
+    margin: 0;
+    padding: 0;
+    background-image: url('https://images.unsplash.com/photo-1523821741446-edb2b68bb7a0');
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    font-family: Arial, sans-serif;
+    color: white;
+    text-align: center;
+    position: relative;
+  }
+  
+  .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent black overlay */
+  }
+  
+  p {
+    position: relative; /* Ensure text is on top of the overlay */
+  }
+  
+  a {
+    color: #ffc107; /* Change link color as needed */
+    text-decoration: none;
+    font-weight: bold;
+  }
+</style>
+</head>
+<body>
+  <div class="overlay"></div>
+  <p>Why so curious? <a href="https://satyendra.in/contact">Contact Satyendra</a></p>
+</body>
+</html>
+"""
+
+
 @router.websocket("/ws/{username}")
 async def websocket_endpoint(websocket: WebSocket, username: str, device: str = None):
     if o_d.get(username) is None:
