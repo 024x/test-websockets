@@ -3,6 +3,7 @@ import json
 try:
     from fastapi import FastAPI, WebSocket
     from typing import Dict
+    from fastapi.responses import HTMLResponse
 except ImportError:
     os.system("pip install fastapi 'uvicorn[standard]'")
     from fastapi import FastAPI, WebSocket
@@ -16,7 +17,7 @@ rd = {'SATYA': 'M1KOOMRRNB', 'NAVEEN': '37DMZL7V04', 'PLUTO': 'ZYXO069NT5', 'SAF
 active_connections: Dict[str, list] = {}
 
 
-@router.get("/")
+@router.get("/", response_class=HTMLResponse)
 async def root():
     return """
 <!DOCTYPE html>
