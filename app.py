@@ -58,7 +58,3 @@ async def websocket_endpoint(websocket: WebSocket, username: str, device: str = 
         except:
             pass
 
-
-if __name__ == "__main__":
-    import uvicorn
-    uvicorn.run(app)
